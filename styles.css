@@ -25,6 +25,12 @@ body{
     border: 0.5px solid black;
 }
 
-.div1:hover{
+.div1.isHovered{
     background-color: black;
+}
+Button{
+    margin-bottom: 20px;
+    margin-top: 20px;
+    padding: 10px;
+    
 }
