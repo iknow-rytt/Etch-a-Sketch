@@ -1,6 +1,16 @@
+let numberOfSquares = 16;
+
 // Sorting out the Button for user input first.
 const container = document.querySelector(".container");
+// Creating a button to use to clear the grid, incase user wants to start over
+const clearButton = document.createElement("button");
+clearButton.classList.add("clearButton");
+clearButton.textContent = "Clear Grid";
+clearButton.addEventListener('click',newGrid);
+document.body.insertBefore(clearButton, container);
 
+
+// Creating a Button that will ask users for how many grids they want to create
 const promptButton = document.createElement("button");
 promptButton.textContent = "Number of Squares";
 document.body.insertBefore(promptButton, container);
@@ -27,16 +37,18 @@ function createGrid(gridNumber){
 }
 createGrid(16);
 
+
 // This runs when the button for the Number of squares you want pop up
 promptButton.addEventListener('click', () =>{
-   const numberOfSquares = prompt("Enter the number of Squares you want from 1 to 100!");
+   numberOfSquares = prompt("Enter the number of Squares you want from 1 to 100!");
    
 
    if(numberOfSquares >= 1 && numberOfSquares <= 100){
-        while(container.firstChild){
-            container.removeChild(container.firstChild);
-        }
-        createGrid(numberOfSquares);
+        newGrid();
+        // while(container.firstChild){
+        //     container.removeChild(container.firstChild);
+        // }
+        // createGrid(numberOfSquares);
     }
     else{
         alert("Please enter a number from 1 to 100!");
@@ -44,3 +56,10 @@ promptButton.addEventListener('click', () =>{
 
 });
 
+// Function to clear the grid of any highlighted boxes after hovering
+function newGrid(){
+    while(container.firstChild){
+        container.removeChild(container.firstChild);
+    }
+    createGrid(numberOfSquares);
+}
