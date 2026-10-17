@@ -15,7 +15,7 @@ body{
 .container{
     width: 900px;
     height: 900px;
-    border: 2px solid black;
+    border: 5px solid black;
     display: flex;
     flex-wrap: wrap;
     
@@ -28,7 +28,7 @@ body{
 .div1.isHovered{
     background-color: black;
 }
-Button{
+button{
     margin-bottom: 20px;
     margin-top: 20px;
     padding: 10px;

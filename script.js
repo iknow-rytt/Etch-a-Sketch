@@ -1,13 +1,13 @@
 let numberOfSquares = 16;
 
-// Sorting out the Button for user input first.
+
 const container = document.querySelector(".container");
 // Creating a button to use to clear the grid, incase user wants to start over
-const clearButton = document.createElement("button");
-clearButton.classList.add("clearButton");
-clearButton.textContent = "Clear Grid";
-clearButton.addEventListener('click',newGrid);
-document.body.insertBefore(clearButton, container);
+const resetButton = document.createElement("button");
+resetButton.classList.add("resetButton");
+resetButton.textContent = "Reset";
+resetButton.addEventListener('click',newGrid);
+document.body.insertBefore(resetButton, container);
 
 
 // Creating a Button that will ask users for how many grids they want to create
@@ -45,10 +45,7 @@ promptButton.addEventListener('click', () =>{
 
    if(numberOfSquares >= 1 && numberOfSquares <= 100){
         newGrid();
-        // while(container.firstChild){
-        //     container.removeChild(container.firstChild);
-        // }
-        // createGrid(numberOfSquares);
+        
     }
     else{
         alert("Please enter a number from 1 to 100!");
