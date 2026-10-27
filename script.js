@@ -1,5 +1,6 @@
 let numberOfSquares = 16;
 let isDrawing = true;
+let isColored = false;
 
 const btnContainer = document.querySelector(".btnContainer");
 const container = document.querySelector(".container");
@@ -22,6 +23,14 @@ eraseButton.addEventListener('click', () => {
 btnContainer.appendChild(eraseButton);
 
 
+// Creating a button that will toggle on the random colors for the boxes
+const randomColor = document.createElement("button");
+randomColor.textContent = "Random Colors";
+randomColor.addEventListener('click', () =>{
+    isColored  = !isColored;
+})
+btnContainer.appendChild(randomColor);
+
 // Creating a Button that will ask users for how many grids they want to create
 const promptButton = document.createElement("button");
 promptButton.textContent = "Number of Squares";
@@ -38,7 +47,12 @@ function createGrid(gridNumber){
             // Creating an event so that when the mouse leaves the box, it rtains the color
             squareDiv.addEventListener('mouseenter', ()=> {
                 squareDiv.classList.add("isHovered");
-                if(isDrawing){
+                if(isDrawing && isColored){
+                    randomColor.textContent = "Black Color";
+                    squareDiv.style.backgroundColor = colorRandomizer();
+                }
+                else if(isDrawing){
+                    randomColor.textContent = "Random Colors";
                     eraseButton.textContent = "Erase";
                     squareDiv.style.backgroundColor = "black";
                 }
@@ -79,4 +93,13 @@ function newGrid(){
         container.removeChild(container.firstChild);
     }
     createGrid(numberOfSquares);
+}
+
+// Function to generate random number that will  be used for the rgb values
+function colorRandomizer(){
+    const R = Math.floor(Math.random() * 256);
+    const G = Math.floor(Math.random() * 256);
+    const B = Math.floor(Math.random() * 256);
+
+    return `rgb(${R} ${G} ${B})`;
 }
