@@ -3,12 +3,15 @@ let isDrawing = true;
 
 const btnContainer = document.querySelector(".btnContainer");
 const container = document.querySelector(".container");
+
+
 // Creating a button to use to clear the grid, incase user wants to start over
 const resetButton = document.createElement("button");
 resetButton.classList.add("resetButton");
 resetButton.textContent = "Reset";
 resetButton.addEventListener('click',newGrid);
 btnContainer.appendChild(resetButton);
+
 
 // Creating a button that will enable the user to erase a single box in the grid after hovering
 const eraseButton = document.createElement("button");
@@ -17,6 +20,8 @@ eraseButton.addEventListener('click', () => {
     isDrawing = !isDrawing;
 });
 btnContainer.appendChild(eraseButton);
+
+
 // Creating a Button that will ask users for how many grids they want to create
 const promptButton = document.createElement("button");
 promptButton.textContent = "Number of Squares";
@@ -34,10 +39,12 @@ function createGrid(gridNumber){
             squareDiv.addEventListener('mouseenter', ()=> {
                 squareDiv.classList.add("isHovered");
                 if(isDrawing){
+                    eraseButton.textContent = "Erase";
                     squareDiv.style.backgroundColor = "black";
                 }
                 else{
-                    squareDiv.style.backgroundColor = "white";
+                    eraseButton.textContent = "Draw";
+                    squareDiv.style.backgroundColor = "white";                   
                 }
             })            
             container.appendChild(squareDiv);
