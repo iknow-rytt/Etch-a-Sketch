@@ -25,9 +25,7 @@ body{
     border: 0.5px solid black;
 }
 
-.div1.isHovered{
-    background-color: black;
-}
+
 button{
     margin-bottom: 20px;
     margin-top: 20px;
