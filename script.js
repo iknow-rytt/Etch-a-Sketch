@@ -1,13 +1,14 @@
 let numberOfSquares = 16;
 let isDrawing = true;
 
+const btnContainer = document.querySelector(".btnContainer");
 const container = document.querySelector(".container");
 // Creating a button to use to clear the grid, incase user wants to start over
 const resetButton = document.createElement("button");
 resetButton.classList.add("resetButton");
 resetButton.textContent = "Reset";
 resetButton.addEventListener('click',newGrid);
-document.body.insertBefore(resetButton, container);
+btnContainer.appendChild(resetButton);
 
 // Creating a button that will enable the user to erase a single box in the grid after hovering
 const eraseButton = document.createElement("button");
@@ -15,11 +16,11 @@ eraseButton.textContent = "Erase";
 eraseButton.addEventListener('click', () => {
     isDrawing = !isDrawing;
 });
-document.body.insertBefore(eraseButton, resetButton);
+btnContainer.appendChild(eraseButton);
 // Creating a Button that will ask users for how many grids they want to create
 const promptButton = document.createElement("button");
 promptButton.textContent = "Number of Squares";
-document.body.insertBefore(promptButton, container);
+btnContainer.appendChild(promptButton);
 
 
 // Made a reusable function for the Grid, whilst also making sure that 16 is the base grid that appears on the screen first.
